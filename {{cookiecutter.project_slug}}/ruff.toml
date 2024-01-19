@@ -23,7 +23,7 @@ preview = false
 target-version = "py310"
 
 # Allow imports relative to the "src/armonik" and "test" directories.
-src = ["src/armonik", "test"]
+src = ["src/{{ cookiecutter.project_slug }}", "tests"]
 
 # Allow lines to be as long as 110.
 line-length = 100

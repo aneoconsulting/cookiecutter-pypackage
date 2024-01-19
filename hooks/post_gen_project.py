@@ -14,5 +14,8 @@ if __name__ == '__main__':
         remove_file('AUTHORS.rst')
         remove_file('docs/authors.rst')
 
+    if '{{ cookiecutter.enable_github_ci }}' != 'y':
+        remove_file('.github/workflows/ci.yaml')
+
     if 'Not open source' == '{{ cookiecutter.open_source_license }}':
         remove_file('LICENSE')

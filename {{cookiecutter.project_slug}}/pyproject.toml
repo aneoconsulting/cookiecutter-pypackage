@@ -10,18 +10,20 @@ name = "{{ cookiecutter.project_slug }}"
 description = "{{ cookiecutter.project_short_description }}"
 dynamic = ["version"]
 readme = "README.md"
-requires-python = "{{ cookiecutter.python_version }}"
+requires-python = ">={{ cookiecutter.python_version }}"
 keywords = []
 {% if is_open_source %}
-license = "{{ cookiecutter.open_source_license }}"
+license = {text = "{{ cookiecutter.open_source_license }}"}
 {%- endif %}
 authors = [
-    "{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>",
+    {name = "{{ cookiecutter.full_name }}", email = "{{ cookiecutter.email }}"},
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = []
+
+[project.urls]
 Homepage = "https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.project_slug }}"
 repository = "https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.project_slug }}"
 "Bug Tracker" = "https://github.com/{{ cookiecutter.github_organization }}/{{ cookiecutter.project_slug }}/issues"

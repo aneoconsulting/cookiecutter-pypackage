@@ -1,13 +1,27 @@
 {% set is_open_source = cookiecutter.open_source_license != 'Not open source' -%}
 
+{% set license_short_name = '' %}
+
+{% if cookiecutter.open_source_license == "MIT license" %}
+    {% set license_short_name = "MIT" %}
+{% elif cookiecutter.open_source_license == "BSD license" %}
+    {% set license_short_name = "BSD" %}
+{% elif cookiecutter.open_source_license == "ISC license" %}
+    {% set license_short_name = "ISC" %}
+{% elif cookiecutter.open_source_license == "Apache Software License 2.0" %}
+    {% set license_short_name = "Apache2" %}
+{% elif cookiecutter.open_source_license == "GNU General Public License v3" %}
+    {% set license_short_name = "GNU3" %}
+{% endif %}
+
 # {{ cookiecutter.project_slug }}
 
 {{ cookiecutter.project_short_description }}
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+{% if is_open_source %}
+[![License](https://img.shields.io/badge/license-{{ license_short_name }}-blue.svg)](LICENSE)
 [![Python Version](https://img.shields.io/badge/python-{{ cookiecutter.python_version }}%2B-blue.svg)](https://pypi.python.org/pypi/{{ cookiecutter.project_slug }})
 [![Docs](https://readthedocs.org/projects/{{ cookiecutter.project_slug | replace("_", "-") }}/badge/?version=latest)](https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io/en/latest/?version=latest)
-{% if is_open_source %}
-TEST
 {%- endif %}
 
 ## Overview
